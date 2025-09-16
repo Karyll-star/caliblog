@@ -1,9 +1,13 @@
+/* eslint-disable simple-import-sort/imports */
 'use client'
 
 import { motion } from 'framer-motion'
+import React from 'react'
+import * as Dialog from '@radix-ui/react-dialog'
+import Image from 'next/image'
 import Balancer from 'react-wrap-balancer'
 
-import { SparkleIcon, UserSecurityIcon } from '~/assets'
+import { AtomIcon, SparkleIcon, UserSecurityIcon } from '~/assets'
 import { PeekabooLink } from '~/components/links/PeekabooLink'
 import { SocialLink } from '~/components/links/SocialLink'
 
@@ -50,6 +54,7 @@ function Founder() {
 }
 
 export function Headline() {
+  const [open, setOpen] = React.useState(false)
   return (
     <div className="max-w-2xl">
       <motion.h1
@@ -81,7 +86,6 @@ export function Headline() {
       >
         <Balancer>
           我是 karyll-周兴，
-          <PeekabooLink href="https://zolplay.com">佐玩</PeekabooLink>
           华东理工大学工业设计专业的一名大三的学生。
           我热爱开发，设计，创新，享受生活，以及在未知领域中探索。
         </Balancer>
@@ -118,7 +122,55 @@ export function Headline() {
           aria-label="我的 GitHub"
           platform="github"
         />
-        <SocialLink href="/feed.xml" platform="rss" aria-label="RSS 订阅" />
+        {/* 打开本地 mydy.jpg 的优雅弹窗 */}
+        <Dialog.Root open={open} onOpenChange={setOpen}>
+          <Dialog.Trigger asChild>
+            <button
+              type="button"
+              aria-label="查看图片"
+              className="group -m-1 p-1"
+            >
+              <AtomIcon className="h-5 w-5 text-zinc-400 transition group-hover:text-zinc-700 dark:text-zinc-400 dark:group-hover:text-zinc-200" />
+            </button>
+          </Dialog.Trigger>
+          <Dialog.Portal>
+            <Dialog.Overlay asChild>
+              <motion.div
+                className="fixed inset-0 z-50 bg-black/50"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              />
+            </Dialog.Overlay>
+            <Dialog.Content asChild>
+              <motion.div
+                className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                initial={{ opacity: 0, scale: 0.96, y: 12 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.98, y: 8 }}
+                transition={{ type: 'spring', damping: 26, stiffness: 220, duration: 0.2 }}
+              >
+                <div className="relative max-h-[85vh] w-full max-w-3xl overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/10 dark:ring-white/10">
+                  <Dialog.Close asChild>
+                    <button
+                      aria-label="关闭"
+                      className="absolute right-3 top-3 z-10 rounded-full bg-black/50 p-1 text-white backdrop-blur transition hover:bg-black/60 dark:bg-white/30 dark:text-black dark:hover:bg-white/40"
+                    >
+                      ✕
+                    </button>
+                  </Dialog.Close>
+                  <Image
+                    src={require('~/app/mydy.jpg')}
+                    alt="mydy"
+                    className="h-auto w-full object-contain"
+                    sizes="(max-width: 768px) 100vw, 768px"
+                    priority
+                  />
+                </div>
+              </motion.div>
+            </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
         <SocialLink
           href="karyllddx@gmail.com"
           aria-label="我的邮箱"
