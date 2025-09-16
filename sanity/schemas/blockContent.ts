@@ -116,6 +116,11 @@ export default defineType({
       type: 'code',
       name: 'codeBlock',
       title: '代码块',
+      // `withFilename` is supported by @sanity/code-input but not in the base type
+      // definitions shipped with the current `sanity` typings. Keep runtime
+      // behavior while relaxing the type here for production builds.
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       options: {
         withFilename: true,
       },
