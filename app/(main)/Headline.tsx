@@ -8,7 +8,6 @@ import Image from 'next/image'
 import Balancer from 'react-wrap-balancer'
 
 import { AtomIcon, SparkleIcon, UserSecurityIcon } from '~/assets'
-import { PeekabooLink } from '~/components/links/PeekabooLink'
 import { SocialLink } from '~/components/links/SocialLink'
 
 function Developer() {
