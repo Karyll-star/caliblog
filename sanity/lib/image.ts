@@ -9,3 +9,6 @@ const builder = createImageUrlBuilder({ projectId, dataset })
 export const urlFor = (source: SanityImageSource) => {
   return builder.image(source)
 }
+
+// Backward-compatible alias for existing imports
+export const urlForImage = urlFor
