@@ -21,8 +21,10 @@ export function BleedThroughImage({
         <Image
           width={dimensions.width}
           height={dimensions.height}
-          unoptimized
           aria-hidden={true}
+          sizes="100vw"
+          loading="lazy"
+          decoding="async"
           {...props}
           alt=""
         />
@@ -30,9 +32,11 @@ export function BleedThroughImage({
       <Image
         width={dimensions.width}
         height={dimensions.height}
-        unoptimized
         placeholder={lqip ? 'blur' : 'empty'}
         blurDataURL={lqip}
+        sizes="(max-width: 768px) 100vw, 1024px"
+        loading="lazy"
+        decoding="async"
         className={clsxm('relative z-20 rounded-xl md:rounded-3xl', className)}
         {...props}
         alt={alt ?? ''}

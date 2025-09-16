@@ -1,8 +1,10 @@
+/* eslint-disable simple-import-sort/imports */
 'use client'
 
 import { clsxm } from '@zolplay/utils'
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
+import { sanityImageLoader } from '~/sanity/lib/image'
 import Link, { type LinkProps } from 'next/link'
 import React from 'react'
 
@@ -96,6 +98,7 @@ export function PeekabooLink({
                 }}
               >
                 <Image
+                  loader={sanityImageLoader}
                   src={`/api/link-preview?url=${href}`}
                   alt={`${href} 的预览图`}
                   className="pointer-events-none absolute left-0 top-0 h-full w-full rounded-xl object-cover"
@@ -103,7 +106,9 @@ export function PeekabooLink({
                   blurDataURL={makeBlurDataURL(16, 16)}
                   width={400}
                   height={250}
-                  unoptimized
+                  sizes="400px"
+                  loading="lazy"
+                  decoding="async"
                 />
               </motion.div>
             </HoverCard.Content>

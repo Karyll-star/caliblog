@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 'use client'
 
 import {
@@ -7,6 +8,7 @@ import {
 } from 'framer-motion'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { sanityImageLoader } from '~/sanity/lib/image'
 import React from 'react'
 
 import { ExternalLinkIcon } from '~/assets'
@@ -42,12 +44,21 @@ export function ProjectCard({ project }: { project: Project }) {
     >
       <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
         <Image
-          src={urlForImage(icon)?.size(100, 100).auto('format').url()}
-          alt=""
+          loader={sanityImageLoader}
+          src={urlForImage(icon)
+            ?.width(72)
+            .height(72)
+            .fit('crop')
+            .dpr(2)
+            .auto('format')
+            .url()}
+          alt={name}
           width={36}
           height={36}
+          sizes="36px"
           className="h-9 w-9 rounded-full"
-          unoptimized
+          // Next.js will lazy-load non-priority images by default
+          priority={false}
         />
       </div>
       <h2 className="mt-6 text-base font-bold text-zinc-800 dark:text-zinc-100">

@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 'use client'
 
 import { type PortableTextComponentProps } from '@portabletext/react'
@@ -5,6 +6,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { clsxm } from '@zolplay/utils'
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
+import { sanityImageLoader } from '~/sanity/lib/image'
 import React from 'react'
 
 import { ClientOnly } from '~/components/ClientOnly'
@@ -56,6 +58,7 @@ export function PortableTextImage({
               <motion.div className="relative" layoutId={`image_${value._key}`}>
                 <Dialog.Trigger>
                   <Image
+                    loader={sanityImageLoader}
                     src={value.url}
                     width={value.dimensions.width}
                     height={value.dimensions.height}
@@ -66,8 +69,9 @@ export function PortableTextImage({
                       hasLabel ? 'rounded-xl' : 'rounded-xl md:rounded-3xl'
                     )}
                     alt={value.alt || ''}
-                    fetchPriority="high"
-                    unoptimized
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 768px, 1024px"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </Dialog.Trigger>
               </motion.div>
@@ -108,6 +112,7 @@ export function PortableTextImage({
                         }}
                       >
                         <Image
+                          loader={sanityImageLoader}
                           src={value.url}
                           width={value.dimensions.width}
                           height={value.dimensions.height}
@@ -115,7 +120,10 @@ export function PortableTextImage({
                           blurDataURL={value.lqip}
                           className="mx-auto h-full overflow-hidden object-contain"
                           alt={value.alt || ''}
-                          unoptimized
+                          sizes="100vw"
+                          loading="eager"
+                          decoding="async"
+                          priority
                         />
                       </motion.div>
                     </div>

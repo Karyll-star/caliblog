@@ -1,7 +1,9 @@
+/* eslint-disable simple-import-sort/imports */
 'use client'
 
 import { clsxm } from '@zolplay/utils'
 import Image from 'next/image'
+import { sanityImageLoader } from '~/sanity/lib/image'
 import Link, { type LinkProps } from 'next/link'
 import React from 'react'
 
@@ -52,14 +54,16 @@ export const RichLink = React.forwardRef<HTMLAnchorElement, RichLinkProps>(
             )}
           >
             <Image
+              loader={sanityImageLoader}
               src={faviconUrl}
               alt=""
               aria-hidden="true"
               className="inline h-4 w-4 rounded"
               width={16}
               height={16}
-              unoptimized
-              priority={false}
+              sizes="16px"
+              loading="lazy"
+              decoding="async"
             />
           </span>
         )}
