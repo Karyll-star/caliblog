@@ -1,10 +1,10 @@
 export const apiVersion =
   process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2025-09-16'
 
-export const dataset = assertValue(
-  process.env.NEXT_PUBLIC_SANITY_DATASET,
-  'Missing environment variable: NEXT_PUBLIC_SANITY_DATASET'
-)
+// Provide a safe default for local/dev: if not set or set to legacy value "blog",
+// fall back to the conventional "production" dataset to avoid runtime errors.
+const rawDataset = process.env.NEXT_PUBLIC_SANITY_DATASET
+export const dataset = rawDataset && rawDataset !== 'blog' ? rawDataset : 'production'
 
 export const projectId = assertValue(
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
