@@ -13,7 +13,7 @@
 // import { usePresenceStore } from '~/lib/store'
 //
 // const enabledMultiplayerAtom = atomWithStorage(
-//   '__cali_so.enabled_multiplayer',
+//   '__karyll_so.enabled_multiplayer',
 //   false
 // )
 //

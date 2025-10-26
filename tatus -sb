@@ -1,0 +1,42 @@
+[1mdiff --git a/app/layout.tsx b/app/layout.tsx[m
+[1mindex d96c351..bc12931 100644[m
+[1m--- a/app/layout.tsx[m
+[1m+++ b/app/layout.tsx[m
+[36m@@ -14,11 +14,11 @@[m [mimport { seo } from '~/lib/seo'[m
+ export const metadata: Metadata = {[m
+   metadataBase: seo.url,[m
+   title: {[m
+[31m-    template: '%s | Karyll Castle',[m
+[32m+[m[32m    template: '%s | Karyll',[m
+     default: seo.title,[m
+   },[m
+   description: seo.description,[m
+[31m-  keywords: 'Karyll,Karyll Castle,郭晓楠,佐玩,创始人,CEO,开发者,设计师,细节控,创新',[m
+[32m+[m[32m  keywords: 'Karyll,Karyll Castle,郭晓楠,佐玩,创始人,CEO,开发者,设计师,细节控,学习者,创新',[m
+   manifest: '/site.webmanifest',[m
+   robots: {[m
+     index: true,[m
+[36m@@ -34,10 +34,10 @@[m [mexport const metadata: Metadata = {[m
+   openGraph: {[m
+     title: {[m
+       default: seo.title,[m
+[31m-      template: '%s | Karyll Castle',[m
+[32m+[m[32m      template: '%s | Karyll',[m
+     },[m
+     description: seo.description,[m
+[31m-    siteName: 'Karyll Castle',[m
+[32m+[m[32m    siteName: 'Karyll',[m
+     locale: 'zh_CN',[m
+     type: 'website',[m
+     url: 'https://karyll.so',[m
+[1mdiff --git a/lib/seo.ts b/lib/seo.ts[m
+[1mindex fdeb3c4..0410d11 100644[m
+[1m--- a/lib/seo.ts[m
+[1m+++ b/lib/seo.ts[m
+[36m@@ -1,5 +1,5 @@[m
+ export const seo = {[m
+[31m-  title: 'Karyll Castle | 开发者、设计师、细节控、创始人',[m
+[32m+[m[32m  title: 'Karyll | 开发者、设计师、细节控、学习者',[m
+   description:[m
+     '我叫 Karyll，一名开发者，设计师，细节控，同时也是佐玩创始人，目前带领着佐玩致力于创造一个充满创造力的工作环境，同时鼓励团队创造影响世界的产品。',[m
+   url: new URL([m
