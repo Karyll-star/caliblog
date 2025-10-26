@@ -14,11 +14,11 @@ import { seo } from '~/lib/seo'
 export const metadata: Metadata = {
   metadataBase: seo.url,
   title: {
-    template: '%s | Cali Castle',
+    template: '%s | Karyll Castle',
     default: seo.title,
   },
   description: seo.description,
-  keywords: 'Cali,Cali Castle,郭晓楠,佐玩,创始人,CEO,开发者,设计师,细节控,创新',
+  keywords: 'Karyll,Karyll Castle,郭晓楠,佐玩,创始人,CEO,开发者,设计师,细节控,创新',
   manifest: '/site.webmanifest',
   robots: {
     index: true,
@@ -34,17 +34,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: {
       default: seo.title,
-      template: '%s | Cali Castle',
+      template: '%s | Karyll Castle',
     },
     description: seo.description,
-    siteName: 'Cali Castle',
+    siteName: 'Karyll Castle',
     locale: 'zh_CN',
     type: 'website',
-    url: 'https://cali.so',
+    url: 'https://karyll.so',
   },
   twitter: {
-    site: '@thecalicastle',
-    creator: '@thecalicastle',
+    site: '@thekaryllcastle',
+    creator: '@thekaryllcastle',
     card: 'summary_large_image',
     title: seo.title,
     description: seo.description,
