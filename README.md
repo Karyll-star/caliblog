@@ -21,9 +21,6 @@ Karyll 的个人博客网站 [https://karyll.so/](https://karyll.so/) 的源代�
 - [React Email](https://react.email)
 - [Resend](https://resend.com/)
 
-### 教程
-
-想部署成自己的网站？可以查看 Karyll 的[官方教程](https://karyll.so/blog/guide-for-cloning-my-site)
 
 ### 本地开发
 
