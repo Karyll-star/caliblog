@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import './globals.css'
 import './clerk.css'
 import './prism.css'
@@ -85,6 +86,7 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
+          <SpeedInsights />
         </body>
       </html>
     </ClerkProvider>

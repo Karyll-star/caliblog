@@ -15,14 +15,14 @@ export const urlForImage = urlFor
 
 // Opinionated helper: apply sensible defaults for perf
 export const buildImage = (source: SanityImageSource) =>
-  urlFor(source).auto('format').fit('max').quality(75)
+  urlFor(source).auto('format').fit('max')
 
 // Next/Image loader for Sanity CDN: dynamically applies width/quality per actual render size
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const sanityImageLoader = ({ src, width, quality }: any) => {
   const url = typeof src === 'string' ? src : ''
   const hasQuery = url.includes('?')
-  const q = quality ?? 75
+  const q = quality ?? 90
   const params = [`auto=format`, `w=${width}`, `q=${q}`]
   return `${url}${hasQuery ? '&' : '?'}${params.join('&')}`
 }

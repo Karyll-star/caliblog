@@ -46,9 +46,9 @@ Card.Link = function CardLink({
   LinkProps & { children: React.ReactNode }) {
   return (
     <>
-      <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-200/30 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-700/20 sm:-inset-x-6 sm:rounded-2xl" />
+      <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-white/50 shadow-ceramic opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100 group-hover:bg-white/80 group-hover:shadow-ceramic-hover group-hover:backdrop-blur-sm dark:bg-zinc-800/50 dark:shadow-none dark:group-hover:bg-zinc-800/80 sm:-inset-x-6 sm:rounded-[2rem]" />
       <Link {...props}>
-        <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl" />
+        <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-[2rem]" />
         <span className="relative z-10">{children}</span>
       </Link>
     </>

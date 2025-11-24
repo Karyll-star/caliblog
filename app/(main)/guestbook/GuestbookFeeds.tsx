@@ -71,6 +71,10 @@ export function GuestbookFeeds(props: { messages?: GuestbookDto[] }) {
     async () => {
       const res = await fetch('/api/guestbook')
       const data = await res.json()
+      if (!Array.isArray(data)) {
+        console.error('Guestbook fetch error:', data)
+        return []
+      }
       return data as GuestbookDto[]
     },
     {
@@ -88,7 +92,7 @@ export function GuestbookFeeds(props: { messages?: GuestbookDto[] }) {
       <div className="absolute inset-0 flex items-center" aria-hidden="true" />
 
       <ul role="list" className="-mb-8 px-1 md:px-4">
-        {messages.map((message, idx) => (
+        {Array.isArray(messages) && messages.map((message, idx) => (
           <MessageBlock
             key={message.id}
             message={message}

@@ -2,15 +2,10 @@ import { currentUser } from '@clerk/nextjs'
 import { type NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
-import { emailConfig } from '~/config/email'
 import { db } from '~/db'
 import { type GuestbookDto, GuestbookHashids } from '~/db/dto/guestbook.dto'
 import { fetchGuestbookMessages } from '~/db/queries/guestbook'
 import { guestbook } from '~/db/schema'
-import NewGuestbookEmail from '~/emails/NewGuestbook'
-import { env } from '~/env.mjs'
-import { url } from '~/lib'
-import { resend } from '~/lib/mail'
 import { ratelimit } from '~/lib/redis'
 
 function getKey(id?: string) {
@@ -19,11 +14,15 @@ function getKey(id?: string) {
 
 export async function GET(req: NextRequest) {
   try {
-    const { success } = await ratelimit.limit(getKey(req.ip ?? ''))
-    if (!success) {
-      return new Response('Too Many Requests', {
-        status: 429,
-      })
+    try {
+      const { success } = await ratelimit.limit(getKey(req.ip ?? ''))
+      if (!success) {
+        return new Response('Too Many Requests', {
+          status: 429,
+        })
+      }
+    } catch (error) {
+      console.error('Rate limit failed, allowing request:', error)
     }
 
     return NextResponse.json(await fetchGuestbookMessages())
@@ -42,11 +41,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
   }
 
-  const { success } = await ratelimit.limit(getKey(user.id))
-  if (!success) {
-    return new Response('Too Many Requests', {
-      status: 429,
-    })
+  try {
+    const { success } = await ratelimit.limit(getKey(user.id))
+    if (!success) {
+      return new Response('Too Many Requests', {
+        status: 429,
+      })
+    }
+  } catch (error) {
+    console.error('Rate limit failed, allowing request:', error)
   }
 
   try {
@@ -61,21 +64,6 @@ export async function POST(req: NextRequest) {
         lastName: user.lastName,
         imageUrl: user.imageUrl,
       },
-    }
-
-    if (env.NODE_ENV === 'production' && env.SITE_NOTIFICATION_EMAIL_TO) {
-      await resend.emails.send({
-        from: emailConfig.from,
-        to: env.SITE_NOTIFICATION_EMAIL_TO,
-        subject: '👋 有人刚刚在留言墙留言了',
-        react: NewGuestbookEmail({
-          link: url(`/guestbook`).href,
-          userFirstName: user.firstName,
-          userLastName: user.lastName,
-          userImageUrl: user.imageUrl,
-          commentContent: message,
-        }),
-      })
     }
 
     const [newGuestbook] = await db

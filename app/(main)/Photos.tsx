@@ -45,8 +45,6 @@ export function Photos({ photos }: { photos: string[] }) {
             className="relative h-40 flex-none shrink-0 snap-start overflow-hidden rounded-xl bg-zinc-100 ring-2 ring-lime-800/20 dark:bg-zinc-800 dark:ring-lime-300/10 md:h-72 md:rounded-3xl"
             animate={{
               width,
-              opacity: isCompact ? 1 : 0.85,
-              filter: isCompact ? 'grayscale(0)' : 'grayscale(0.5)',
               rotate: idx % 2 === 0 ? 2 : -1,
             }}
             whileHover={
@@ -54,8 +52,6 @@ export function Photos({ photos }: { photos: string[] }) {
                 ? {}
                 : {
                     width: expandedWidth,
-                    opacity: 1,
-                    filter: 'grayscale(0)',
                   }
             }
             layout

@@ -9,24 +9,6 @@ import {
   varchar,
 } from 'drizzle-orm/pg-core'
 
-export const subscribers = pgTable('subscribers', {
-  id: serial('id').primaryKey(),
-  email: varchar('email', { length: 120 }),
-  token: varchar('token', { length: 50 }),
-  subscribedAt: timestamp('subscribed_at'),
-  unsubscribedAt: timestamp('unsubscribed_at'),
-  updatedAt: timestamp('updated_at').defaultNow(),
-})
-
-export const newsletters = pgTable('newsletters', {
-  id: serial('id').primaryKey(),
-  subject: varchar('subject', { length: 200 }),
-  body: text('body'),
-  sentAt: timestamp('sent_at'),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow(),
-})
-
 export const comments = pgTable(
   'comments',
   {

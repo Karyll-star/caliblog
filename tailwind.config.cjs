@@ -375,6 +375,24 @@ module.exports = {
 
       animation: {
         typing: 'typing-pulse 1.35s steps(1, end) infinite',
+        blob: 'blob 10s infinite',
+      },
+
+      keyframes: {
+        blob: {
+          '0%': {
+            transform: 'translate(0px, 0px) scale(1)',
+          },
+          '33%': {
+            transform: 'translate(30px, -50px) scale(1.1)',
+          },
+          '66%': {
+            transform: 'translate(-20px, 20px) scale(0.9)',
+          },
+          '100%': {
+            transform: 'translate(0px, 0px) scale(1)',
+          },
+        },
       },
 
       boxShadow: {
@@ -390,6 +408,11 @@ module.exports = {
           '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
         'dark-tremor-dropdown':
           '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+        
+        // Custom Organic Sci-Fi Shadows
+        'ceramic': '0px 10px 30px rgba(0, 0, 0, 0.03), 0px 4px 8px rgba(0, 0, 0, 0.02), inset 0px 2px 4px rgba(255, 255, 255, 0.8)',
+        'ceramic-hover': '0px 20px 40px rgba(0, 0, 0, 0.06), 0px 8px 16px rgba(0, 0, 0, 0.04), inset 0px 2px 4px rgba(255, 255, 255, 0.8)',
+        'inner-white': 'inset 0px 0px 20px rgba(255, 255, 255, 0.8)',
       },
 
       borderRadius: {

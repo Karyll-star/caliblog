@@ -5,21 +5,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import {
-  DashboardIcon,
-  HomeIcon,
-  NewCommentIcon,
-  SubscriberIcon,
-  TiltedSendIcon,
-} from '~/assets'
+import { DashboardIcon, HomeIcon, NewCommentIcon } from '~/assets'
 
 import logo from './../apple-icon.png'
 
 const navigation = [
   { name: '仪表盘', href: '', icon: DashboardIcon },
   { name: '评论', href: '/comments', icon: NewCommentIcon },
-  { name: '订阅', href: '/subscribers', icon: SubscriberIcon },
-  { name: 'Newsletters', href: '/newsletters', icon: TiltedSendIcon },
 ]
 
 export function Sidebar() {

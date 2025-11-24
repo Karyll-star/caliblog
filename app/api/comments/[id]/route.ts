@@ -1,10 +1,9 @@
-import { clerkClient, currentUser } from '@clerk/nextjs'
+import { currentUser } from '@clerk/nextjs'
 import { Ratelimit } from '@upstash/ratelimit'
 import { asc, eq } from 'drizzle-orm'
 import { type NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
-import { emailConfig } from '~/config/email'
 import { db } from '~/db'
 import {
   type CommentDto,
@@ -12,10 +11,6 @@ import {
   type PostIDLessCommentDto,
 } from '~/db/dto/comment.dto'
 import { comments } from '~/db/schema'
-import NewReplyCommentEmail from '~/emails/NewReplyComment'
-import { env } from '~/env.mjs'
-import { url } from '~/lib'
-import { resend } from '~/lib/mail'
 import { redis } from '~/lib/redis'
 import { client } from '~/sanity/lib/client'
 
@@ -121,38 +116,6 @@ export async function POST(req: NextRequest, { params }: Params) {
         imageUrl: user.imageUrl,
       },
       parentId: parentId ? (parentId as number) : null,
-    }
-
-    if (parentId && env.NODE_ENV === 'production') {
-      const [parentUserFromDb] = await db
-        .select({
-          userId: comments.userId,
-        })
-        .from(comments)
-        .where(eq(comments.id, parentId as number))
-      if (parentUserFromDb && parentUserFromDb.userId !== user.id) {
-        const { primaryEmailAddressId, emailAddresses } =
-          await clerkClient.users.getUser(parentUserFromDb.userId)
-        const primaryEmailAddress = emailAddresses.find(
-          (emailAddress) => emailAddress.id === primaryEmailAddressId
-        )
-        if (primaryEmailAddress) {
-          await resend.emails.send({
-            from: emailConfig.from,
-            to: primaryEmailAddress.emailAddress,
-            subject: '👋 有人回复了你的评论',
-            react: NewReplyCommentEmail({
-              postTitle: post.title,
-              postLink: url(`/blog/${post.slug}`).href,
-              postImageUrl: post.imageUrl,
-              userFirstName: user.firstName,
-              userLastName: user.lastName,
-              userImageUrl: user.imageUrl,
-              commentContent: body.text,
-            }),
-          })
-        }
-      }
     }
 
     const [newComment] = await db

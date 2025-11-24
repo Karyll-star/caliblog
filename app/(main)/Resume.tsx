@@ -13,7 +13,7 @@ type Resume = {
 
 export function Resume({ resume }: { resume: Resume[] }) {
   return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+    <div className="rounded-[2rem] bg-white/50 p-6 shadow-ceramic backdrop-blur-sm dark:bg-zinc-800/50 dark:shadow-none dark:ring-1 dark:ring-white/10">
       <h2 className="flex items-center text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BriefcaseIcon className="h-5 w-5 flex-none" />
         <span className="ml-2">工作经历</span>
@@ -21,7 +21,7 @@ export function Resume({ resume }: { resume: Resume[] }) {
       <ol className="mt-6 space-y-4">
         {resume.map((role, roleIndex) => (
           <li key={roleIndex} className="flex gap-4">
-            <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-white shadow-ceramic dark:bg-zinc-800 dark:shadow-none dark:ring-1 dark:ring-zinc-700/50">
               <Image
                 src={role.logo}
                 alt={role.company}

@@ -14,17 +14,37 @@ export default function BlogLayout({
 }) {
   return (
     <>
-      <div className="pointer-events-none fixed inset-0 select-none bg-[url('/grid-black.svg')] bg-top bg-repeat dark:bg-[url('/grid.svg')]" />
-      <span className="pointer-events-none fixed top-0 block h-[800px] w-full select-none bg-[radial-gradient(103.72%_46.58%_at_50%_0%,rgba(5,5,5,0.045)_0%,rgba(0,0,0,0)_100%)] dark:bg-[radial-gradient(103.72%_46.58%_at_50%_0%,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0)_100%)]" />
+      {/* Organic Sci-Fi Background: Living Gradient */}
+      <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none select-none bg-zinc-50 dark:bg-zinc-950">
+        {/* Noise Texture */}
+        <div 
+          className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] mix-blend-overlay z-10"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          }}
+        />
+
+        {/* Vivid Gradient Blobs */}
+        <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-purple-300/40 rounded-full mix-blend-multiply filter blur-[80px] animate-blob dark:bg-purple-900/30 dark:mix-blend-normal"></div>
+        <div className="absolute top-[20%] right-[-10%] w-[45vw] h-[45vw] bg-indigo-300/40 rounded-full mix-blend-multiply filter blur-[80px] animate-blob animation-delay-2000 dark:bg-indigo-900/30 dark:mix-blend-normal"></div>
+        <div className="absolute bottom-[-20%] left-[20%] w-[60vw] h-[60vw] bg-pink-300/40 rounded-full mix-blend-multiply filter blur-[100px] animate-blob animation-delay-4000 dark:bg-pink-900/30 dark:mix-blend-normal"></div>
+      </div>
 
       <div className="fixed inset-0 flex justify-center sm:px-8">
         <div className="flex w-full max-w-7xl lg:px-8">
-          <div className="w-full bg-zinc-50/90 ring-1 ring-zinc-100 dark:bg-zinc-900/80 dark:ring-zinc-400/20" />
+          {/* Main Glass Container - Masked and very transparent */}
+          <div 
+            className="w-full bg-white/10 backdrop-blur-xl shadow-ceramic rounded-[2.5rem] my-4 dark:bg-zinc-900/40 dark:shadow-none dark:ring-1 dark:ring-white/5"
+            style={{
+              maskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%)'
+            }}
+          />
         </div>
       </div>
 
       <QueryProvider>
-        <div className="relative text-zinc-800 dark:text-zinc-200">
+        <div className="relative text-zinc-600 dark:text-zinc-400 font-medium">
           <Header />
           <main>{children}</main>
           <Suspense>
