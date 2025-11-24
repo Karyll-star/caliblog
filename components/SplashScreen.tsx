@@ -1,10 +1,9 @@
 'use client'
 
+import { clsxm } from '@zolplay/utils'
 import { AnimatePresence, motion } from 'framer-motion'
 import Lottie from 'lottie-react'
 import React, { useEffect, useState } from 'react'
-
-import { clsxm } from '@zolplay/utils'
 
 interface SplashScreenProps {
   animationData: unknown
