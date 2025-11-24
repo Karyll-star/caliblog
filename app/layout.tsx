@@ -7,7 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata, Viewport } from 'next'
 
 import { ThemeProvider } from '~/app/(main)/ThemeProvider'
-import lottieAnimation from '~/assets/lottie-loading.json'
+import catAnimation from '~/assets/cat.json'
 import { SplashScreen } from '~/components/SplashScreen'
 import { url } from '~/lib'
 import { zhCN } from '~/lib/clerkLocalizations'
@@ -80,7 +80,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <body className="flex h-full flex-col">
-          <SplashScreen animationData={lottieAnimation} />
+          <SplashScreen animationData={catAnimation} />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
