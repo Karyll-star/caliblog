@@ -144,15 +144,6 @@ export function Header() {
   const avatarTransform = useMotionTemplate`translate3d(${avatarX}rem, 0, 0) scale(${avatarScale})`
   const avatarBorderTransform = useMotionTemplate`translate3d(${avatarBorderX}rem, 0, 0) scale(${avatarBorderScale})`
 
-  const [isShowingAltAvatar, setIsShowingAltAvatar] = React.useState(false)
-  const onAvatarContextMenu = React.useCallback(
-    (event: React.MouseEvent<HTMLDivElement>) => {
-      event.preventDefault()
-      setIsShowingAltAvatar((prev) => !prev)
-    },
-    []
-  )
-
   return (
     <>
       <motion.header
@@ -197,7 +188,6 @@ export function Header() {
                     className="relative inline-flex"
                     layoutId="avatar"
                     layout
-                    onContextMenu={onAvatarContextMenu}
                   >
                     <motion.div
                       className="absolute left-0 top-3 origin-left opacity-[var(--avatar-border-opacity,0)] transition-opacity"
@@ -216,7 +206,6 @@ export function Header() {
                     >
                       <Avatar.Image
                         large
-                        alt={isShowingAltAvatar}
                         className="block h-full w-full"
                       />
                     </motion.div>
@@ -257,10 +246,9 @@ export function Header() {
                     <motion.div
                       layoutId="avatar"
                       layout
-                      onContextMenu={onAvatarContextMenu}
                     >
                       <Avatar>
-                        <Avatar.Image alt={isShowingAltAvatar} />
+                        <Avatar.Image />
                       </Avatar>
                     </motion.div>
                   )}
