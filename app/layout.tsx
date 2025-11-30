@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: {
       default: seo.title,
-      template: '%s | Cali Castle',
+      template: '%s | karyll',
     },
     description: seo.description,
     siteName: 'Karyll',

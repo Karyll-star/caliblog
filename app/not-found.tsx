@@ -22,13 +22,12 @@ export default function NotFoundPage() {
         >
           404
         </motion.h1>
-        <Link
+        <a
           href="/"
           className="pointer-events-auto select-none text-xl font-bold text-white mix-blend-difference hover:underline"
         >
           返回主页
-        </Link>
-      </div>
+        </a>      </div>
     </main>
   )
 }

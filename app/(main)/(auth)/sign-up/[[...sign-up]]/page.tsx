@@ -5,7 +5,7 @@ import { Container } from '~/components/ui/Container'
 export default function Page() {
   return (
     <Container className="mt-24 flex items-center justify-center">
-      <SignUp />
+      <SignUp afterSignUpUrl="/" />
     </Container>
   )
 }
