@@ -7,7 +7,6 @@ import React from 'react'
 import { UserArrowLeftIcon } from '~/assets'
 import { Button } from '~/components/ui/Button'
 import { type GuestbookDto } from '~/db/dto/guestbook.dto'
-import { url } from '~/lib'
 
 import { GuestbookFeeds } from './GuestbookFeeds'
 import { GuestbookInput } from './GuestbookInput'

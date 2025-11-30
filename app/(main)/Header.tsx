@@ -28,7 +28,7 @@ import {
 import { Avatar } from '~/components/Avatar'
 import { Container } from '~/components/ui/Container'
 import { Tooltip } from '~/components/ui/Tooltip'
-import { url } from '~/lib'
+
 import { clamp } from '~/lib/math'
 export function Header() {
   const isHomePage = usePathname() === '/'

@@ -2,7 +2,6 @@
 
 import Spline from '@splinetool/react-spline'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 
 import { url } from '~/lib'
 
