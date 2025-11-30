@@ -1,10 +1,10 @@
 export const seo = {
-  title: 'Cali Castle | 开发者、设计师、细节控、创始人',
+  title: 'Karyll | 开发者、设计师、细节控、学习者',
   description:
-    '我叫 Cali，一名开发者，设计师，细节控，同时也是佐玩创始人，目前带领着佐玩致力于创造一个充满创造力的工作环境，同时鼓励团队创造影响世界的产品。',
+    '我是 karyll-周兴， 华东理工大学工业设计专业的一名大三的学生。 我热爱开发，设计，创新，享受生活，以及在未知领域中探索。',
   url: new URL(
     process.env.NODE_ENV === 'production'
-      ? 'https://cali.so'
+      ? 'https://blog.karyll.art/'
       : 'http://localhost:3000'
   ),
 } as const
