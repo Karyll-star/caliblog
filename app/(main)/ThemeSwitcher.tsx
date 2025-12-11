@@ -7,17 +7,6 @@ import React from 'react'
 
 import dayNightAnimation from '~/assets/day_night_cycle.json'
 
-const themes = [
-  {
-    label: '浅色模式',
-    value: 'light',
-  },
-  {
-    label: '深色模式',
-    value: 'dark',
-  },
-]
-
 export function ThemeSwitcher() {
   const [mounted, setMounted] = React.useState(false)
   const [lottieLoaded, setLottieLoaded] = React.useState(false)
