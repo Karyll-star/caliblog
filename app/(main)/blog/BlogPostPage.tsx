@@ -1,10 +1,8 @@
 'use client'
 
 import { parseDateTime } from '@zolplay/utils'
-import { motion } from 'framer-motion'
 import Image from 'next/image'
 import React from 'react'
-import Balancer from 'react-wrap-balancer'
 
 import { BlogPostStateLoader } from '~/app/(main)/blog/BlogPostStateLoader'
 import { BlogReactions } from '~/app/(main)/blog/BlogReactions'
@@ -57,16 +55,8 @@ export function BlogPostPage({
           </Button>
           <article data-postid={post._id}>
             <header className="relative flex flex-col items-center pb-5 after:absolute after:-bottom-1 after:block after:h-px after:w-full after:rounded after:bg-gradient-to-r after:from-zinc-400/20 after:via-zinc-200/10 after:to-transparent dark:after:from-zinc-600/20 dark:after:via-zinc-700/10">
-              <motion.div
-                className="relative mb-7 aspect-[240/135] w-full md:mb-12 md:w-[120%]"
-                initial={{ opacity: 0, scale: 0.96, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{
-                  duration: 0.35,
-                  type: 'spring',
-                  stiffness: 120,
-                  damping: 20,
-                }}
+              <div
+                className="relative mb-7 aspect-[240/135] w-full md:mb-12 md:w-[110%]"
               >
                 <div className="absolute z-0 hidden aspect-[240/135] w-full blur-xl saturate-150 after:absolute after:inset-0 after:hidden after:bg-white/50 dark:after:bg-black/50 md:block md:after:block">
                   <Image
@@ -87,18 +77,9 @@ export function BlogPostPage({
                   unoptimized
                   fill
                 />
-              </motion.div>
-              <motion.div
-                className="flex w-full items-center space-x-4 text-sm font-medium text-zinc-600/80 dark:text-zinc-400/80"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.15,
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 20,
-                  delay: 0.1,
-                }}
+              </div>
+              <div
+                className="flex w-full items-center space-x-4 text-sm font-medium text-[var(--text-secondary)]"
               >
                 <time
                   dateTime={post.publishedAt}
@@ -115,46 +96,19 @@ export function BlogPostPage({
                   <ScriptIcon />
                   <span>{post.categories?.join(', ')}</span>
                 </span>
-              </motion.div>
-              <motion.h1
-                className="mt-6 w-full text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.2,
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 30,
-                  delay: 0.2,
-                }}
+              </div>
+              <h1
+                className="mt-6 w-full text-4xl font-bold tracking-tight text-[var(--text-primary)] sm:text-5xl"
               >
-                <Balancer>{post.title}</Balancer>
-              </motion.h1>
-              <motion.p
-                className="my-5 w-full text-sm font-medium text-zinc-500"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.2,
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 20,
-                  delay: 0.23,
-                }}
+                {post.title}
+              </h1>
+              <p
+                className="my-5 w-full text-sm font-medium text-[var(--text-tertiary)]"
               >
                 {post.description}
-              </motion.p>
-              <motion.div
-                className="flex w-full items-center space-x-4 text-sm font-medium text-zinc-700/50 dark:text-zinc-300/50"
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.15,
-                  type: 'spring',
-                  stiffness: 150,
-                  damping: 20,
-                  delay: 0.255,
-                }}
+              </p>
+              <div
+                className="flex w-full items-center space-x-4 text-sm font-medium text-[var(--text-muted)]"
               >
                 <span
                   className="inline-flex items-center space-x-1.5"
@@ -168,7 +122,7 @@ export function BlogPostPage({
                   <HourglassIcon />
                   <span>{post.readingTime.toFixed(0)}分钟阅读</span>
                 </span>
-              </motion.div>
+              </div>
             </header>
             <Prose className="mt-8">
               <PostPortableText value={post.body} />
@@ -188,7 +142,7 @@ export function BlogPostPage({
 
       {post.related && post.related.length > 0 ? (
         <section className="mb-12 mt-32">
-          <h2 className="mb-6 flex items-center justify-center text-lg font-bold text-zinc-900 dark:text-zinc-100">
+          <h2 className="mb-6 flex items-center justify-center text-lg font-bold text-[var(--text-primary)]">
             <PencilSwooshIcon className="h-5 w-5 flex-none" />
             <span className="ml-2">相关文章</span>
           </h2>

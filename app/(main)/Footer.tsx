@@ -19,7 +19,7 @@ function NavLink({
   return (
     <Link
       href={href}
-      className="transition hover:text-lime-500 dark:hover:text-lime-400"
+      className="transition hover:text-[var(--text-accent)]"
     >
       {children}
     </Link>
@@ -28,7 +28,7 @@ function NavLink({
 
 function Links() {
   return (
-    <nav className="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
+    <nav className="flex gap-6 text-sm font-medium text-[var(--text-nav)]">
       {navigationItems.map(({ href, text }) => (
         <NavLink key={href} href={href}>
           {text}
@@ -47,7 +47,7 @@ async function TotalPageViews() {
   }
 
   return (
-    <span className="flex items-center justify-center gap-1 text-xs text-zinc-500 dark:text-zinc-400 md:justify-start">
+    <span className="flex items-center justify-center gap-1 text-xs text-[var(--text-secondary)] md:justify-start">
       <UsersIcon className="h-4 w-4" />
       <span title={`${Intl.NumberFormat('en-US').format(views)}次浏览`}>
         总浏览量&nbsp;
@@ -81,7 +81,7 @@ async function LastVisitorInfo() {
   }
 
   return (
-    <span className="flex items-center justify-center gap-1 text-xs text-zinc-500 dark:text-zinc-400 md:justify-start">
+    <span className="flex items-center justify-center gap-1 text-xs text-[var(--text-secondary)] md:justify-start">
       <CursorClickIcon className="h-4 w-4" />
       <span>
         最近访客来自&nbsp;
@@ -99,7 +99,7 @@ export function Footer() {
         <div className="pb-16 pt-10">
           <Container.Inner>
             <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-              <p className="text-sm text-zinc-500/80 dark:text-zinc-400/80">
+              <p className="text-sm text-[var(--text-secondary)] opacity-80">
                 &copy; {new Date().getFullYear()} karyll Blog.
               </p>
               <Links />

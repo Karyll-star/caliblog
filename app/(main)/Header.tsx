@@ -14,11 +14,11 @@ import {
   useMotionTemplate,
   useMotionValue,
 } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
 import { NavigationBar } from '~/app/(main)/NavigationBar'
-import { ThemeSwitcher } from '~/app/(main)/ThemeSwitcher'
 import {
   GitHubBrandIcon,
   GoogleBrandIcon,
@@ -29,6 +29,11 @@ import { Avatar } from '~/components/Avatar'
 import { Container } from '~/components/ui/Container'
 import { Tooltip } from '~/components/ui/Tooltip'
 import { clamp } from '~/lib/math'
+
+const ThemeSwitcher = dynamic(
+  () => import('~/app/(main)/ThemeSwitcher').then((mod) => mod.ThemeSwitcher),
+  { ssr: false }
+)
 export function Header() {
   const isHomePage = usePathname() === '/'
 
@@ -229,7 +234,7 @@ export function Header() {
                 'var(--header-inner-position)' as React.CSSProperties['position'],
             }}
           >
-            <div className="relative flex gap-4">
+            <div className="relative flex gap-4 items-center">
               <motion.div
                 className="flex flex-1"
                 initial={{ opacity: 0, y: 15 }}
@@ -258,7 +263,7 @@ export function Header() {
                 <NavigationBar.Desktop className="pointer-events-auto relative z-50 hidden md:block" />
               </div>
               <motion.div
-                className="flex justify-end gap-3 md:flex-1"
+                className="flex justify-end gap-3 md:flex-1 items-center"
                 initial={{ opacity: 0, y: -20, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
               >
@@ -351,7 +356,7 @@ function UserInfo() {
                 <Tooltip.Trigger asChild>
                   <button
                     type="button"
-                    className="group h-10 rounded-full bg-white/80 px-3 text-sm shadow-ceramic backdrop-blur transition dark:bg-zinc-900/80 dark:text-zinc-200 dark:shadow-none dark:ring-1 dark:ring-white/10"
+                    className="group h-12 rounded-full bg-white/80 px-3 text-sm shadow-ceramic backdrop-blur transition dark:bg-zinc-900/80 dark:text-zinc-200 dark:shadow-none dark:ring-1 dark:ring-white/10"
                   >
                     <UserArrowLeftIcon className="h-5 w-5" />
                   </button>

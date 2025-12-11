@@ -25,8 +25,8 @@ function NavItem({
         className={clsxm(
           'relative block whitespace-nowrap px-3 py-2 transition',
           isActive
-            ? 'text-lime-600 dark:text-lime-400'
-            : 'hover:text-lime-600 dark:hover:text-lime-400'
+            ? 'text-[var(--text-accent)]'
+            : 'hover:text-[var(--text-accent)]'
         )}
       >
         {children}
@@ -67,6 +67,7 @@ function Desktop({
         'rounded-full bg-white/80 shadow-ceramic backdrop-blur-md',
         'dark:bg-zinc-900/80 dark:shadow-none dark:ring-1 dark:ring-white/10',
         '[--spotlight-color:rgba(255,255,255,0.6)]',
+        'dark:[--spotlight-color:rgba(161,98,7,0.5)]',
         className
       )}
       {...props}
@@ -78,7 +79,7 @@ function Desktop({
         aria-hidden="true"
       />
 
-      <ul className="flex bg-transparent px-3 text-sm font-medium text-zinc-800 dark:text-zinc-200 ">
+      <ul className="flex bg-transparent px-3 text-sm font-medium text-[var(--text-nav)]">
         {navigationItems.map(({ href, text }) => (
           <NavItem key={href} href={href}>
             {text}
@@ -108,7 +109,7 @@ function MobileNavItem({
 function Mobile(props: PopoverProps<'div'>) {
   return (
     <Popover {...props}>
-      <Popover.Button className="group flex items-center rounded-full bg-white/80 px-4 py-2 text-sm font-medium text-zinc-800 shadow-ceramic backdrop-blur-md focus:outline-none dark:bg-zinc-900/80 dark:text-zinc-200 dark:ring-1 dark:ring-white/10 dark:focus-visible:ring-yellow-500/80">
+      <Popover.Button className="group flex items-center rounded-full bg-white/80 px-4 py-2 text-sm font-medium text-[var(--text-nav)] shadow-ceramic backdrop-blur-md focus:outline-none dark:bg-zinc-900/80 dark:ring-1 dark:ring-white/10 dark:focus-visible:ring-yellow-500/80">
         前往
         {/* Chevron */}
         <svg
@@ -167,12 +168,12 @@ function Mobile(props: PopoverProps<'div'>) {
                   />
                 </svg>
               </Popover.Button>
-              <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+              <h2 className="text-sm font-medium text-[var(--text-secondary)]">
                 站内导航
               </h2>
             </div>
             <nav className="mt-6">
-              <ul className="-my-2 divide-y divide-zinc-500/20 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
+              <ul className="-my-2 divide-y divide-zinc-500/20 text-base text-[var(--text-nav)] dark:divide-zinc-100/5">
                 {navigationItems.map(({ href, text }) => (
                   <MobileNavItem key={href} href={href}>
                     {text}

@@ -46,7 +46,7 @@ Card.Link = function CardLink({
   LinkProps & { children: React.ReactNode }) {
   return (
     <>
-      <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-white/50 shadow-ceramic opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100 group-hover:bg-white/80 group-hover:shadow-ceramic-hover group-hover:backdrop-blur-sm dark:bg-zinc-800/50 dark:shadow-none dark:group-hover:bg-zinc-800/80 sm:-inset-x-6 sm:rounded-[2rem]" />
+      <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-[var(--bg-icon)] shadow-ceramic transition duration-300 group-hover:scale-100 group-hover:bg-white/80 group-hover:shadow-ceramic-hover group-hover:backdrop-blur-sm dark:shadow-none dark:group-hover:bg-zinc-800/80 sm:-inset-x-6 sm:rounded-[2rem]" />
       <Link {...props}>
         <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-[2rem]" />
         <span className="relative z-10">{children}</span>
@@ -65,7 +65,7 @@ Card.Title = function CardTitle({
   children: React.ReactNode
 }) {
   return (
-    <Component className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+    <Component className="text-base font-semibold tracking-tight text-[var(--text-primary)]">
       {href ? <Card.Link href={href}>{children}</Card.Link> : children}
     </Component>
   )
@@ -81,7 +81,7 @@ Card.Description = function CardDescription({
   return (
     <p
       className={clsxm(
-        'relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400',
+        'relative z-10 mt-2 text-sm text-[var(--text-secondary)]',
         className
       )}
     >
@@ -118,7 +118,7 @@ Card.Eyebrow = function CardEyebrow({
     <Component
       className={clsxm(
         className,
-        'relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500',
+        'relative z-10 order-first mb-3 flex items-center text-sm text-[var(--text-muted)]',
         decorate && 'pl-3.5'
       )}
       {...props}
